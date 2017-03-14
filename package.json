@@ -1,0 +1,25 @@
+{
+  "name": "schedule",
+  "description": "first task for yandex school",
+  "scripts": {
+    "start": "gulp build",
+    "dev": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oktava6/schedule.git"
+  },
+  "author": "oktava6",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/oktava6/schedule/issues"
+  },
+  "homepage": "https://github.com/oktava6/schedule#readme",
+  "devDependencies": {
+    "del": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-ejs": "^3.0.0",
+    "gulp-sass": "^3.1.0"
+  }
+}
