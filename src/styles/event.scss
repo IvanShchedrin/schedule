@@ -1,0 +1,46 @@
+.event {
+  margin-top: 20px;
+  padding: 20px;
+  position: relative;
+  min-height: calc(100vw - 80px);
+  box-shadow: 0 0 8px 0 rgba(0, 0, 0, .3);
+  font-family: "Helvetica Neue", sans-serif;
+  color: rgb(40, 40, 40);
+}
+
+.event-topic {
+  font-size: 17px;
+  line-height: 21px;
+}
+
+.event-lecturer {
+  display: inline-block;
+  margin-top: 10px;
+  border-bottom: 1px dashed rgb(40, 40, 40);
+  font-size: 14px;
+  text-decoration: none;
+  color: rgb(40, 40, 40);
+  transition: color .3s, border-color .3s;
+
+  &:hover {
+    transition: none;
+    color: rgba(255, 0, 0, 0.5);
+    border-bottom-color: rgba(255, 0, 0, 0.5);
+  }
+}
+
+.event-school {
+  font-size: 14px;
+  line-height: 19px;
+}
+
+.event-date {
+  position: absolute;
+  bottom: 20px;
+  font-size: 14px;
+}
+
+.divider {
+  margin: 10px 0;
+  border-bottom: 1px solid rgb(200, 200, 200);
+}

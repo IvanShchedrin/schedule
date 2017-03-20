@@ -1,65 +1,58 @@
 [
   {
-    "schools": ["shri", "mobdev", "design"],
+    "schools": ["shri", "design"],
     "topic": "Адаптивная вёрстка",
     "lecturer": "basvasilich",
-    "date": "2017-08-03T19:30",
+    "date": "2017-08-03T19:30+03:00",
     "place": "Синий Кит"
   },
   {
     "schools": ["shri", "mobdev", "design"],
-    "topic": "Адаптивная вёрстка",
-    "lecturer": "basvasilich",
-    "date": "2017-08-03T19:30",
+    "topic": "Работа с сенсорным пользовательским вводом",
+    "lecturer": "d-dushkin",
+    "date": "2017-08-03T19:30+03:00",
+    "place": "Синий Кит"
+  },
+  {
+    "schools": ["shri"],
+    "topic": "Мультимедиа: возможности браузера",
+    "lecturer": "maxatwork",
+    "date": "2017-08-03T19:30+03:00",
+    "place": "Синий Кит"
+  },
+  {
+    "schools": ["shri", "mobdev"],
+    "topic": "Нативные приложения на веб-технологиях",
+    "lecturer": "veged",
+    "date": "2017-08-03T19:30+03:00",
+    "place": "Синий Кит"
+  },
+  {
+    "schools": ["shri"],
+    "topic": "Клиентская оптимизация: базовые знания и лучшие практики",
+    "lecturer": "alt-j",
+    "date": "2017-08-03T19:30+03:00",
+    "place": "Синий Кит"
+  },
+  {
+    "schools": ["shri"],
+    "topic": "Клиентская оптимизация: мобильные устройства и инструменты",
+    "lecturer": "veged",
+    "date": "2017-08-03T19:30+03:00",
     "place": "Синий Кит"
   },
   {
     "schools": ["shri", "mobdev", "design"],
-    "topic": "Адаптивная вёрстка",
-    "lecturer": "basvasilich",
-    "date": "2017-08-03T19:30",
+    "topic": "Инфраструктура веб-проектов",
+    "lecturer": "andre487",
+    "date": "2017-08-03T19:30+03:00",
     "place": "Синий Кит"
   },
   {
-    "schools": ["shri", "mobdev", "design"],
-    "topic": "Адаптивная вёрстка",
-    "lecturer": "basvasilich",
-    "date": "2017-08-03T19:30",
-    "place": "Синий Кит"
-  },
-  {
-    "schools": ["shri", "mobdev", "design"],
-    "topic": "Адаптивная вёрстка",
-    "lecturer": "basvasilich",
-    "date": "2017-08-03T19:30",
-    "place": "Синий Кит"
-  },
-  {
-    "schools": ["shri", "mobdev", "design"],
-    "topic": "Адаптивная вёрстка",
-    "lecturer": "basvasilich",
-    "date": "2017-08-03T19:30",
-    "place": "Синий Кит"
-  },
-  {
-    "schools": ["shri", "mobdev", "design"],
-    "topic": "Адаптивная вёрстка",
-    "lecturer": "basvasilich",
-    "date": "2017-08-03T19:30",
-    "place": "Синий Кит"
-  },
-  {
-    "schools": ["shri", "mobdev", "design"],
-    "topic": "Адаптивная вёрстка",
-    "lecturer": "basvasilich",
-    "date": "2017-08-03T19:30",
-    "place": "Синий Кит"
-  },
-  {
-    "schools": ["shri", "mobdev", "design"],
-    "topic": "Адаптивная вёрстка",
-    "lecturer": "basvasilich",
-    "date": "2017-08-03T19:30",
+    "schools": ["shri"],
+    "topic": "Инструменты разработки мобильного фронтенда",
+    "lecturer": "andre487",
+    "date": "2017-08-03T19:30+03:00",
     "place": "Синий Кит"
   }
 ]

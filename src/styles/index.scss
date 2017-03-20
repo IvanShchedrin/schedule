@@ -1,5 +1,6 @@
 @import "normalize";
+@import "./event.scss";
 
-body {
-  background-color: aliceblue;
+.content {
+  padding: 0 20px;
 }

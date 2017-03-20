@@ -9,11 +9,11 @@
 </head>
 <body>
   <div class="header">
-    <input type="date" />
+
   </div>
   <div class="content">
     <% schedule.forEach(function(event) { %>
-    <%- include('event.html', { props: event }) %>
+      <%- include('event.html', { props: event }) %>
     <% }) %>
   </div>
 
