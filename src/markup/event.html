@@ -1,5 +1,6 @@
-<div class="schedule-event">
-    <% const date = new Date(props.date) %>
+<% const date = new Date(props.date) %>
+
+<div class="schedule-event" data-date="<%= +date %>">
     <div class="schedule-event__topic">
         <%= props.topic %>
     </div>
@@ -13,7 +14,7 @@
         </div>
     <% }) %>
     <div class="schedule-event__place">
-        <%= `${date.getHours()}:${date.getMinutes()}, ${props.place}` %>
+        <%= `${date.getHours()}:${('0' + date.getMinutes()).substr(-2)}, ${props.place}` %>
     </div>
     <div class="schedule-event__date">
         <div class="schedule-event__date-day">

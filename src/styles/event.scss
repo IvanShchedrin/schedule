@@ -46,7 +46,6 @@
   width: 100px;
   bottom: 5px;
   right: 20px;
-  font-family: "Arial", sans-serif;
   font-weight: 600;
   color: rgba(255, 0, 0, .3);
 }
@@ -56,6 +55,7 @@
   font-weight: 600;
   line-height: 100px;
   text-align: right;
+  font-family: "Arial Narrow", Arial, sans-serif;
 }
 
 .schedule-event__date-month {
@@ -66,6 +66,7 @@
   text-align: center;
   transform-origin: 0 100%;
   transform: rotate(90deg);
+  font-family: "Arial", sans-serif;
 }
 
 .divider {

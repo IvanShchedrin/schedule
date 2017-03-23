@@ -13,7 +13,7 @@ const paths = {
   data: './src/data/**.*',
   html: './src/markup/**.*',
   css: './src/styles/**.*',
-  js: './src/js/**.*',
+  js: './src/**/*.js',
 };
 
 const readData = () => {
@@ -52,6 +52,12 @@ gulp.task('js', ['rm:js'], () => {
       output: {
         filename: 'index.js',
       },
+      module: {
+        loaders: [{
+          test: /\.(js)$/,
+          loader: 'babel-loader'
+        }],
+      },
     }))
     .pipe(gulp.dest('./build/'));
 });
@@ -66,7 +72,7 @@ gulp.task('server', function () {
 gulp.task('default', ['html', 'css', 'js', 'server'], () => {
   gulp.watch([paths.data, paths.html], ['html']);
   gulp.watch([paths.css], ['css']);
-  gulp.watch([paths.js], ['js']);
+  gulp.watch([paths.js, paths.data], ['js']);
 });
 
 gulp.task('build', ['html', 'css', 'js']);
