@@ -1,4 +1,4 @@
-.event {
+.schedule-event {
   margin-top: 20px;
   padding: 20px;
   position: relative;
@@ -8,16 +8,16 @@
   color: rgb(40, 40, 40);
 }
 
-.event-topic {
+.schedule-event__topic {
   font-size: 17px;
   line-height: 21px;
 }
 
-.event-lecturer {
+.schedule-event__lecturer {
   display: inline-block;
   margin-top: 10px;
   border-bottom: 1px dashed rgb(40, 40, 40);
-  font-size: 14px;
+  font-size: 15px;
   text-decoration: none;
   color: rgb(40, 40, 40);
   transition: color .3s, border-color .3s;
@@ -29,18 +29,46 @@
   }
 }
 
-.event-school {
+.schedule-event__school {
   font-size: 14px;
   line-height: 19px;
 }
 
-.event-date {
+.schedule-event__place {
   position: absolute;
+  max-width: calc(100% - 140px);
   bottom: 20px;
   font-size: 14px;
 }
 
+.schedule-event__date {
+  position: absolute;
+  width: 100px;
+  bottom: 5px;
+  right: 20px;
+  font-family: "Arial", sans-serif;
+  font-weight: 600;
+  color: rgba(255, 0, 0, .3);
+}
+
+.schedule-event__date-day {
+  font-size: 90px;
+  font-weight: 600;
+  line-height: 100px;
+  text-align: right;
+}
+
+.schedule-event__date-month {
+  position: absolute;
+  bottom: 100%;
+  left: 100%;
+  width: 100%;
+  text-align: center;
+  transform-origin: 0 100%;
+  transform: rotate(90deg);
+}
+
 .divider {
-  margin: 10px 0;
+  margin: 15px 0;
   border-bottom: 1px solid rgb(200, 200, 200);
 }

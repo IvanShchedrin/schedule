@@ -1,18 +1,26 @@
-<div class="event">
-    <div class="event-topic">
+<div class="schedule-event">
+    <% const date = new Date(props.date) %>
+    <div class="schedule-event__topic">
         <%= props.topic %>
     </div>
-    <a class="event-lecturer" href="#">
+    <a class="schedule-event__lecturer" href="#">
         <%= lecturers[props.lecturer].name %>
     </a>
     <div class="divider"></div>
     <% props.schools.forEach(function(key) { %>
-        <div class="event-school">
+        <div class="schedule-event__school">
             <%= schools[key].name %>
         </div>
     <% }) %>
-    <div class="event-date">
-        <% const date = new Date(props.date) %>
+    <div class="schedule-event__place">
         <%= `${date.getHours()}:${date.getMinutes()}, ${props.place}` %>
+    </div>
+    <div class="schedule-event__date">
+        <div class="schedule-event__date-day">
+            <%= date.getDate() %>
+        </div>
+        <div class="schedule-event__date-month">
+            <%= utils.getMonth(date.getMonth()) %>
+        </div>
     </div>
 </div>

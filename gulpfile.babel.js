@@ -7,6 +7,7 @@ import cleanCSS from 'gulp-clean-css';
 import fs from 'fs';
 import webpack from 'gulp-webpack';
 import connect from 'gulp-connect';
+import * as utils from './src/utils/index.js';
 
 const paths = {
   data: './src/data/**.*',
@@ -29,7 +30,7 @@ gulp.task('rm:js', () => del(['build/index.js']));
 
 gulp.task('html', ['rm:html'], () => {
   return gulp.src('./src/markup/index.html')
-    .pipe(ejs({ ...readData() }))
+    .pipe(ejs({ ...readData(), utils }))
     .pipe(gulp.dest('./build/'))
 });
 

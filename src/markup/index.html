@@ -12,9 +12,11 @@
 
   </div>
   <div class="content">
-    <% schedule.forEach(function(event) { %>
-      <%- include('event.html', { props: event }) %>
-    <% }) %>
+    <div class="schedule">
+      <% schedule.forEach(function(event) { %>
+        <%- include('event.html', { props: event }) %>
+      <% }) %>
+    </div>
   </div>
 
   <script src="index.js"></script>
