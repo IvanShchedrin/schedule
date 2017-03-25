@@ -1,0 +1,36 @@
+.schedule-event__review {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 20px;
+  overflow-y: auto;
+  font-size: 4vw;
+  line-height: 5.5vw;
+  background-color: #fff;
+  transition: transform .5s;
+  transform: translateY(100%);
+
+  &.active {
+    transform: translateY(0);
+  }
+
+  & > svg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 30px;
+    height: 30px;
+    stroke: #f00;
+    opacity: .4;
+    stroke-width: 1px;
+  }
+}
+
+@media (min-width: 625px) {
+  .schedule-event__review {
+    font-size: 17px;
+    line-height: 21px;
+  }
+}

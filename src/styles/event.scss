@@ -1,25 +1,29 @@
+@import "./event-review.scss";
+
 .schedule-event {
+  box-sizing: border-box;
   margin-top: 20px;
   padding: 20px;
   position: relative;
-  min-height: calc(100vw - 80px);
+  min-height: calc(100vw - 40px);
   box-shadow: 0 0 8px 0 rgba(0, 0, 0, .3);
   font-family: "Helvetica Neue", sans-serif;
+  text-align: left;
   color: rgb(40, 40, 40);
+  overflow: hidden;
 }
 
-.schedule-event__topic {
-  font-size: 17px;
-  line-height: 21px;
+.divider {
+  margin: 4vw 0;
+  border-bottom: 1px solid rgb(200, 200, 200);
 }
 
-.schedule-event__lecturer {
-  display: inline-block;
-  margin-top: 10px;
+.pseudo-link {
+  display: inline;
   border-bottom: 1px dashed rgb(40, 40, 40);
-  font-size: 15px;
   text-decoration: none;
   color: rgb(40, 40, 40);
+  cursor: pointer;
   transition: color .3s, border-color .3s;
 
   &:hover {
@@ -29,47 +33,96 @@
   }
 }
 
+.schedule-event__topic {
+  font-size: 5vw;
+  line-height: 6.5vw;
+}
+
+.schedule-event__lecturer {
+  margin-top: 2vw;
+  font-size: 4.5vw;
+}
+
 .schedule-event__school {
-  font-size: 14px;
-  line-height: 19px;
+  font-size: 4vw;
+  line-height: 5.5vw;
 }
 
 .schedule-event__place {
   position: absolute;
-  max-width: calc(100% - 140px);
+  max-width: calc(100% - 32vw);
   bottom: 20px;
-  font-size: 14px;
+  font-size: 4vw;
 }
 
 .schedule-event__date {
   position: absolute;
-  width: 100px;
-  bottom: 5px;
-  right: 20px;
+  bottom: 20px;
+  right: 10px;
   font-weight: 600;
+  text-align: center;
   color: rgba(255, 0, 0, .3);
 }
 
 .schedule-event__date-day {
-  font-size: 90px;
-  font-weight: 600;
-  line-height: 100px;
-  text-align: right;
+  font-size: 25vw;
+  line-height: 20vw;
   font-family: "Arial Narrow", Arial, sans-serif;
 }
 
 .schedule-event__date-month {
-  position: absolute;
-  bottom: 100%;
-  left: 100%;
-  width: 100%;
-  text-align: center;
-  transform-origin: 0 100%;
-  transform: rotate(90deg);
+  font-size: 5vw;
   font-family: "Arial", sans-serif;
 }
 
-.divider {
-  margin: 15px 0;
-  border-bottom: 1px solid rgb(200, 200, 200);
+@media (min-width: 400px) {
+  .schedule-event {
+    margin-top: 30px;
+    min-height: calc(100vw - 60px);
+    padding: 30px;
+  }
+  .schedule-event__place {
+    bottom: 30px;
+  }
+  .schedule-event__date {
+    bottom: 30px;
+    right: 20px;
+  }
+}
+
+@media (min-width: 625px) {
+  .schedule-event {
+    display: inline-block;
+    margin: 10px;
+    padding: 20px;
+    width: 290px;
+    min-height: 290px;
+    vertical-align: top;
+  }
+  .schedule-event__topic {
+    font-size: 19px;
+    line-height: 24px;
+  }
+  .schedule-event__lecturer {
+    margin-top: 10px;
+    font-size: 17px;
+  }
+  .divider {
+    margin: 15px 0;
+  }
+  .schedule-event__school {
+    font-size: 15px;
+    line-height: 17px;
+  }
+  .schedule-event__place {
+    max-width: 60%;
+    font-size: 15px;
+  }
+  .schedule-event__date-day {
+    font-size: 70px;
+    line-height: 55px;
+  }
+  .schedule-event__date-month {
+    font-size: 19px;
+  }
 }

@@ -2,11 +2,15 @@
 
 <div class="schedule-event" data-date="<%= +date %>">
     <div class="schedule-event__topic">
-        <%= props.topic %>
+        <a class="pseudo-link">
+            <%= props.topic %>
+        </a>
     </div>
-    <a class="schedule-event__lecturer" href="#">
-        <%= lecturers[props.lecturer].name %>
-    </a>
+    <div class="schedule-event__lecturer">
+        <a class="pseudo-link" href="<%= props.lecturer %>">
+            <%= lecturers[props.lecturer].name %>
+        </a>
+    </div>
     <div class="divider"></div>
     <% props.schools.forEach(function(key) { %>
         <div class="schedule-event__school">
@@ -23,5 +27,11 @@
         <div class="schedule-event__date-month">
             <%= utils.getMonth(date.getMonth()) %>
         </div>
+    </div>
+    <div class="schedule-event__review">
+        <svg x="0" y="0" viewBox="0, 0, 10, 10">
+            <g><path d="M2.5,2.5 L7.5,7.5"/><path d="M2.5,7.5 L7.5,2.5"/></g>
+        </svg>
+        <%= props.review %>
     </div>
 </div>

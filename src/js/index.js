@@ -1,4 +1,6 @@
 const lecturers = require('json!./../data/lecturers.json');
-import dateChecker from './datesChecker';
+import checkDates from './datesChecker';
+import { initEvents } from './events';
 
-dateChecker();
+checkDates();
+initEvents();

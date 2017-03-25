@@ -4,6 +4,7 @@ const checkDates = () => {
 
   events.forEach(event => {
     const date = new Date(+event.dataset.date || 0);
+
     if (date.getTime() < dateNow.getTime() + 1000*60*180) { // 3 hours left
       event.classList.add('schedule-event-past')
     }
