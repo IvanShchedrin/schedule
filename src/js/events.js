@@ -1,48 +1,63 @@
-const titlesClick = () => {
-  const titles = document.querySelectorAll('.schedule-event__topic > .pseudo-link');
+const lecturersData = require('json!./../data/lecturers.json');
+const lecturerImage = document.querySelector('.lecturer-image');
+const lecturerText = document.querySelector('.lecturer-text');
+let prevScrollTop = 0;
 
-  titles.forEach(title => title.addEventListener('click', () => {
-    const review = event.target.parentNode.parentNode.querySelector('.schedule-event__review');
-    review.classList.add('active');
-  }));
-};
-
-const reviewMouseOver = () => {
-  const events = document.querySelectorAll('.schedule-event');
-
-  events.forEach(event => event.addEventListener('mouseleave', (e) => {
-    e.target.querySelector('.schedule-event__review').classList.remove('active');
-  }));
-};
-
-const reviewCrossClick = () => {
-  const crosses = document.querySelectorAll('.schedule-event__review > svg');
-
-  crosses.forEach(cross => cross.addEventListener('click', (event) => {
-    for (let i = 0; i < event.path.length; i++) {
-      if (typeof event.path[i].className === 'string' && event.path[i].className.indexOf('schedule-event__review') !== -1) {
-        event.path[i].classList.remove('active');
-        return;
-      }
-    }
-  }));
-};
-
-const lecturersClick = () => {
+const lecturersClicks = () => {
   const lecturers = document.querySelectorAll('.schedule-event__lecturer > .pseudo-link');
 
   lecturers.forEach(lecturer => lecturer.addEventListener('click', (event) => {
     event.preventDefault();
+
     const id = event.target.pathname.substring(1);
-    console.log(id);
+    const data = lecturersData[id];
+
+    prevScrollTop = document.body.scrollTop;
+    document.body.classList.add('overlay');
+    document.querySelector('html').classList.add('overlay');
+    lecturerImage.parentNode.classList.add('active');
+    lecturerImage.src = data.image;
+    lecturerText.innerHTML = data.about;
+  }));
+};
+
+const titlesClicks = () => {
+  const titles = document.querySelectorAll('.schedule-event__topic > .pseudo-link');
+
+  titles.forEach(title => title.addEventListener('click', (event) => {
+    const review = event.currentTarget.parentNode.parentNode.querySelector('.schedule-event__review');
+    review.classList.add('active');
+  }));
+};
+
+const reviewMouseOvers = () => {
+  const events = document.querySelectorAll('.schedule-event');
+
+  events.forEach(event => event.addEventListener('mouseleave', (e) => {
+    e.currentTarget.querySelector('.schedule-event__review').classList.remove('active');
+  }));
+};
+
+const reviewCrossClicks = () => {
+  const crosses = document.querySelectorAll('.schedule-event__review > svg');
+
+  crosses.forEach(cross => cross.addEventListener('click', (event) => {
+    event.currentTarget.parentNode.classList.remove('active');
   }));
 };
 
 const initEvents = () => {
-  titlesClick();
-  reviewMouseOver();
-  reviewCrossClick();
-  lecturersClick();
+  titlesClicks();
+  reviewMouseOvers();
+  reviewCrossClicks();
+  lecturersClicks();
+
+  document.querySelector('.lecturer-cross').addEventListener('click', () => {
+    document.body.classList.remove('overlay');
+    document.querySelector('html').classList.remove('overlay');
+    document.body.scrollTop = prevScrollTop;
+    lecturerImage.parentNode.classList.remove('active');
+  });
 };
 
 export { initEvents };

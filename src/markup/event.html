@@ -28,10 +28,15 @@
             <%= utils.getMonth(date.getMonth()) %>
         </div>
     </div>
+    <div class="schedule-event__materials">
+        <a href="/lectures/<%= props.alias %>" class="link">Материалы лекции</a>
+    </div>
     <div class="schedule-event__review">
         <svg x="0" y="0" viewBox="0, 0, 10, 10">
             <g><path d="M2.5,2.5 L7.5,7.5"/><path d="M2.5,7.5 L7.5,2.5"/></g>
         </svg>
-        <%= props.review %>
+        <div class="schedule-event__review-text">
+            <%= props.review %>
+        </div>
     </div>
 </div>

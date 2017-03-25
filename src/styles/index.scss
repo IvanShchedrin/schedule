@@ -1,8 +1,15 @@
 @import "normalize";
 @import "./event.scss";
+@import "./lecturer.scss";
 
 .content {
   padding: 0 20px;
+}
+
+.overlay {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
 
 @media (min-width: 400px) {

@@ -1,0 +1,42 @@
+.lecturer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding-top: 5vw;
+  flex-direction: column;
+  background: rgb(255, 255, 255);
+  display: none;
+
+  &.active {
+    display: flex;
+  }
+}
+
+.lecturer-cross {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 30px;
+  height: 30px;
+  stroke: #f00;
+  opacity: .4;
+  stroke-width: 1px;
+}
+
+.lecturer-image {
+  display: block;
+  margin: 0 auto;
+  width: 80vw;
+  height: 80vw;
+  border-radius: 200px;
+}
+
+.lecturer-text {
+  margin-top: 5vw;
+  padding: 0 20px 20px;
+  font-size: 4vw;
+  line-height: 5.5vw;
+  overflow-y: auto;
+}
