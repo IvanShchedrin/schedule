@@ -6,16 +6,25 @@
   padding: 20px;
   position: relative;
   min-height: calc(100vw - 40px);
-  border: 1px solid rgb(200, 200, 200);
+  border: 1px solid #d6d6d6;
   font-family: "Helvetica Neue", sans-serif;
   text-align: left;
   color: rgb(40, 40, 40);
+  background-color: #edffef;
   overflow: hidden;
+
+  &.schedule-event-past {
+    background-color: #fff7f8;
+  }
+
+  &.hidden {
+    display: none;
+  }
 }
 
 .divider {
   margin: 4vw 0;
-  border-bottom: 1px solid rgb(200, 200, 200);
+  border-bottom: 1px solid #d6d6d6;
 }
 
 .pseudo-link, .link {

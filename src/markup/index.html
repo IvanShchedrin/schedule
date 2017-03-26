@@ -7,12 +7,32 @@
   <link rel="stylesheet" type="text/css" href="index.css">
 </head>
 <body>
-  <div class="header">
-
+  <div class="filter">
+    <div class="filter-wrapper">
+      <label class="filter-label" for="lecturer">Лектор:</label>
+      <select class="filter-lecturer" id="lecturer">
+        <option value="all">Все</option>
+        <% Object.keys(lecturers).forEach(key => { %>
+          <option value="<%= key %>"><%= lecturers[key].name %></option>
+        <% }) %>
+      </select>
+    </div>
+    <div class="filter-wrapper">
+      <label class="filter-label" for="school">Школа:</label>
+      <select class="filter-school" id="school">
+        <option value="all">Все</option>
+        <% Object.keys(schools).forEach(key => { %>
+          <option value="<%= key %>"><%= schools[key].name %></option>
+        <% }) %>
+      </select>
+    </div>
+    <div class="filter-message hidden">
+      Для заданного поиска нет событий.
+    </div>
   </div>
   <div class="content">
     <div class="schedule">
-      <% schedule.forEach(function(event) { %>
+      <% schedule.forEach(event => { %>
         <%- include('event.html', { props: event }) %>
       <% }) %>
     </div>
@@ -20,7 +40,7 @@
       <svg class="lecturer-cross" x="0" y="0" viewBox="0, 0, 10, 10">
         <g><path d="M2.5,2.5 L7.5,7.5"/><path d="M2.5,7.5 L7.5,2.5"/></g>
       </svg>
-      <img class="lecturer-image" src="" role="presentation" />
+      <img class="lecturer-image" src="<%= lecturers[Object.keys(lecturers)[0]].image %>" role="presentation" />
       <div class="lecturer-text"></div>
     </div>
   </div>

@@ -1,6 +1,6 @@
 <% const date = new Date(props.date) %>
 
-<div class="schedule-event" data-date="<%= +date %>">
+<div class="schedule-event" data-alias="<%= props.alias %>">
     <div class="schedule-event__topic">
         <a class="pseudo-link">
             <%= props.topic %>

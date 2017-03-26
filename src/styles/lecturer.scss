@@ -1,4 +1,5 @@
 .lecturer {
+  display: flex;
   position: fixed;
   top: 0;
   right: 0;
@@ -6,16 +7,18 @@
   left: 0;
   padding-top: 5vw;
   flex-direction: column;
+  font-family: "Helvetica Neue", sans-serif;
   background: rgb(255, 255, 255);
-  display: none;
+  overflow-y: auto;
+  visibility: hidden;
 
   &.active {
-    display: flex;
+    visibility: visible;
   }
 }
 
 .lecturer-cross {
-  position: absolute;
+  position: fixed;
   top: 20px;
   right: 20px;
   width: 30px;
@@ -23,14 +26,21 @@
   stroke: #f00;
   opacity: .4;
   stroke-width: 1px;
+  cursor: pointer;
 }
 
 .lecturer-image {
   display: block;
   margin: 0 auto;
-  width: 80vw;
-  height: 80vw;
+  width: 60vw;
+  height: 60vw;
   border-radius: 200px;
+  opacity: 0;
+  transition: opacity .2s .2s;
+}
+
+.active .lecturer-image {
+  opacity: 1;
 }
 
 .lecturer-text {
@@ -38,5 +48,41 @@
   padding: 0 20px 20px;
   font-size: 4vw;
   line-height: 5.5vw;
-  overflow-y: auto;
+}
+
+@media (min-width: 520px) {
+  .lecturer {
+    padding: 20px;
+  }
+  .lecturer-image {
+    width: 250px;
+    height: 250px;
+  }
+  .lecturer-text {
+    max-width: 500px;
+    margin: 20px auto 0;
+    padding: 0;
+    font-size: 19px;
+    line-height: 24px;
+  }
+}
+
+@media (min-width: 820px) {
+  .lecturer {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  .lecturer-cross {
+    width: 50px;
+    height: 50px;
+  }
+  .lecturer-image {
+    margin: 0 40px 0 0;
+  }
+  .lecturer-text {
+    margin: 0;
+    max-width: 700px;
+    max-height: 100%;
+  }
 }
