@@ -10,7 +10,7 @@ const checkDates = () => {
 
     if (!eventData) return;
 
-    if (+new Date(eventData.date) < +dateNow + 1000*60*180) { // 3 hours left
+    if (+new Date(eventData.date) < (+dateNow - 1000*60*120)) { // 2 hours left
       event.classList.add('schedule-event-past')
     }
   });
