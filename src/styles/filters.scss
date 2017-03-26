@@ -37,13 +37,13 @@
   .filter {
     display: flex;
     justify-content: center;
-    margin-top: 20px;
+    margin-top: 10px;
   }
   .filter-wrapper {
     margin: 0 10px;
     flex-direction: row;
   }
   .filter-label {
-    margin-right: 10px;
+    margin: 0 10px 0 0;
   }
 }
