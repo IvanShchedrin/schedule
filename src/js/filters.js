@@ -38,9 +38,7 @@ const filterEvents = (key, value) => {
   hiddenEvents.indexOf(0) === -1 ? message.classList.remove('schedule-event_hidden') : message.classList.add('schedule-event_hidden');
 };
 
-const initFilters = () => {
+export default function () {
   document.querySelector('.filter__lecturer').addEventListener('change', (event) => filterEvents('lecturer', event.target.value));
   document.querySelector('.filter__school').addEventListener('change', (event) => filterEvents('school', event.target.value));
 };
-
-export { initFilters };

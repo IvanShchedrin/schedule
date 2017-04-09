@@ -5,6 +5,8 @@ import sass from 'gulp-sass';
 import autoprefixer from 'gulp-autoprefixer';
 import cleanCSS from 'gulp-clean-css';
 import fs from 'fs';
+import ghpages from 'gh-pages';
+import path from 'path';
 import webpack from 'gulp-webpack';
 import connect from 'gulp-connect';
 import * as utils from './src/js/utils.js';
@@ -14,6 +16,7 @@ const paths = {
   html: './src/markup/**.*',
   css: './src/styles/**.*',
   js: './src/**/*.js',
+  assets: './src/**/*',
 };
 
 const readData = () => {
@@ -27,6 +30,7 @@ const readData = () => {
 gulp.task('rm:css', () => del(['build/index.css']));
 gulp.task('rm:html', () => del(['build/index.html']));
 gulp.task('rm:js', () => del(['build/index.js']));
+gulp.task('rm:assets', () => del(['build/assets/']));
 
 gulp.task('html', ['rm:html'], () => {
   return gulp.src('./src/markup/index.html')
@@ -62,17 +66,20 @@ gulp.task('js', ['rm:js'], () => {
     .pipe(gulp.dest('./build/'));
 });
 
-gulp.task('server', function () {
-  connect.server({
-    root: 'build',
-    port: 8000,
-  });
+gulp.task('assets', ['rm:assets'], () => {
+  return gulp.src('./src/assets/**/*')
+    .pipe(gulp.dest('./build/assets/'));
 });
 
-gulp.task('default', ['html', 'css', 'js', 'server'], () => {
+gulp.task('server', () => connect.server({ root: 'build', port: 8000 }));
+
+gulp.task('gh:publish', () => ghpages.publish(path.join(__dirname, 'build')));
+
+gulp.task('default', ['html', 'css', 'js', 'assets', 'server'], () => {
   gulp.watch([paths.data, paths.html], ['html']);
   gulp.watch([paths.css], ['css']);
   gulp.watch([paths.js, paths.data], ['js']);
+  gulp.watch([paths.assets], ['assets']);
 });
 
 gulp.task('build', ['html', 'css', 'js']);

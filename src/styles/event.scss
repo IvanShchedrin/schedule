@@ -10,8 +10,9 @@
   font-family: "Helvetica Neue", sans-serif;
   text-align: left;
   color: rgb(40, 40, 40);
-  background-color: #edffef;
   overflow: hidden;
+  background-color: #edffef;
+  transition: background .3s;
 
   &.schedule-event_hidden {
     display: none;
