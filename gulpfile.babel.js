@@ -1,5 +1,6 @@
 import gulp from 'gulp';
 import ejs from 'gulp-ejs';
+import htmlmin from 'gulp-htmlmin';
 import del from 'del';
 import sass from 'gulp-sass';
 import autoprefixer from 'gulp-autoprefixer';
@@ -7,7 +8,8 @@ import cleanCSS from 'gulp-clean-css';
 import fs from 'fs';
 import ghpages from 'gh-pages';
 import path from 'path';
-import webpack from 'gulp-webpack';
+import gulpWebpack from 'gulp-webpack';
+import webpack from 'webpack';
 import connect from 'gulp-connect';
 import * as utils from './src/js/utils.js';
 
@@ -35,6 +37,7 @@ gulp.task('rm:assets', () => del(['build/assets/']));
 gulp.task('html', ['rm:html'], () => {
   return gulp.src('./src/markup/index.html')
     .pipe(ejs({ ...readData(), utils }))
+    .pipe(htmlmin({ collapseWhitespace: true }))
     .pipe(gulp.dest('./build/'))
 });
 
@@ -52,7 +55,7 @@ gulp.task('css', ['rm:css'], () => {
 
 gulp.task('js', ['rm:js'], () => {
   return gulp.src('./src/js/index.js')
-    .pipe(webpack({
+    .pipe(gulpWebpack({
       output: {
         filename: 'index.js',
       },
@@ -62,6 +65,9 @@ gulp.task('js', ['rm:js'], () => {
           loader: 'babel-loader'
         }],
       },
+      plugins: [
+        new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } }),
+      ]
     }))
     .pipe(gulp.dest('./build/'));
 });
