@@ -1,5 +1,5 @@
 import scheduleData from 'json!./../data/schedule.json';
-import { findElem } from './../utils';
+import { findElem } from './utils';
 
 const checkDates = () => {
   const events = document.querySelectorAll('.schedule-event') || [];
@@ -11,7 +11,7 @@ const checkDates = () => {
     if (!eventData) return;
 
     if (+new Date(eventData.date) < (+dateNow - 1000*60*120)) { // 2 hours left
-      event.classList.add('schedule-event-past')
+      event.classList.add('schedule-event_past')
     }
   });
 };

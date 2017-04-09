@@ -13,12 +13,12 @@
   background-color: #edffef;
   overflow: hidden;
 
-  &.schedule-event-past {
-    background-color: #fff7f8;
+  &.schedule-event_hidden {
+    display: none;
   }
 
-  &.hidden {
-    display: none;
+  &.schedule-event_past {
+    background-color: #fff7f8;
   }
 }
 
@@ -54,6 +54,12 @@
 .schedule-event__lecturer {
   margin-top: 2vw;
   font-size: 4.5vw;
+
+  &:before {
+    display: block;
+    content: "";
+    margin-top: 10px;
+  }
 }
 
 .schedule-event__school {
@@ -92,7 +98,7 @@
   font-family: "Arial", sans-serif;
 }
 
-.schedule-event-past {
+.schedule-event_past {
   .schedule-event__place {
     display: none;
   }

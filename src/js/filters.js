@@ -1,7 +1,7 @@
 import scheduleData from 'json!./../data/schedule.json';
-import { findElem } from './../utils';
+import { findElem } from './utils';
 
-const message = document.querySelector('.filter-message');
+const message = document.querySelector('.filter__message');
 const events = document.querySelector('.schedule').children;
 const filters = {
   lecturer: (item, value) => item.lecturer === value,
@@ -34,13 +34,13 @@ const filterEvents = (key, value) => {
     });
   });
 
-  hiddenEvents.forEach((item, i) => item ? events[i].classList.add('hidden') : events[i].classList.remove('hidden'));
-  hiddenEvents.indexOf(0) === -1 ? message.classList.remove('hidden') : message.classList.add('hidden');
+  hiddenEvents.forEach((item, i) => item ? events[i].classList.add('schedule-event_hidden') : events[i].classList.remove('schedule-event_hidden'));
+  hiddenEvents.indexOf(0) === -1 ? message.classList.remove('schedule-event_hidden') : message.classList.add('schedule-event_hidden');
 };
 
 const initFilters = () => {
-  document.querySelector('.filter-lecturer').addEventListener('change', (event) => filterEvents('lecturer', event.target.value));
-  document.querySelector('.filter-school').addEventListener('change', (event) => filterEvents('school', event.target.value));
+  document.querySelector('.filter__lecturer').addEventListener('change', (event) => filterEvents('lecturer', event.target.value));
+  document.querySelector('.filter__school').addEventListener('change', (event) => filterEvents('school', event.target.value));
 };
 
 export { initFilters };

@@ -1,64 +1,43 @@
 import lecturersData from 'json!./../data/lecturers.json';
-const lecturerImage = document.querySelector('.lecturer-image');
-const lecturerText = document.querySelector('.lecturer-text');
+
+const lecturerImage = document.querySelector('.lecturer__image');
+const lecturerText = document.querySelector('.lecturer__text');
+const lecturerPopup = document.querySelector('.lecturer');
+const htmlElement = document.querySelector('html');
 let prevScrollTop = 0;
 
 const handleLecturerClick = (event) => {
   event.preventDefault();
-
-  const id = event.target.pathname.substring(1);
-  const data = lecturersData[id];
+  const data = lecturersData[event.target.pathname.substring(1)];
 
   prevScrollTop = document.body.scrollTop;
   document.body.classList.add('overlay');
-  document.querySelector('html').classList.add('overlay');
-  lecturerImage.parentNode.classList.add('active');
+  htmlElement.classList.add('overlay');
+  lecturerPopup.classList.add('lecturer_active');
   lecturerImage.src = data.image;
   lecturerText.innerHTML = data.about;
 };
 
-const lecturersClicks = () => {
-  const lecturers = document.querySelectorAll('.schedule-event__lecturer > .pseudo-link');
-
-  [].forEach.call(lecturers, lecturer => lecturer.addEventListener('click', handleLecturerClick));
-};
-
-const lecturerClose = () => {
-  document.querySelector('.lecturer-cross').addEventListener('click', () => {
-    document.body.classList.remove('overlay');
-    document.querySelector('html').classList.remove('overlay');
-    document.body.scrollTop = prevScrollTop;
-    lecturerImage.parentNode.classList.remove('active');
-  });
-};
-
 const handleTitleClick = (event) => {
   event.preventDefault();
-  event.currentTarget.parentNode.parentNode.querySelector('.schedule-event__review').classList.add('active');
-};
-const titlesClicks = () => {
-  const titles = document.querySelectorAll('.schedule-event__topic > .pseudo-link');
-  [].forEach.call(titles, title => title.addEventListener('click', handleTitleClick));
+  event.target.parentNode.querySelector('.schedule-event__review').classList.add('schedule-event__review_active');
 };
 
-const handleMouseOver = event => event.currentTarget.querySelector('.schedule-event__review').classList.remove('active');
-const reviewMouseOvers = () => {
-  const events = document.querySelector('.schedule').children;
-  [].forEach.call(events, event => event.addEventListener('mouseleave', handleMouseOver));
-};
+document.querySelector('.lecturer__cross').addEventListener('click', () => {
+  htmlElement.classList.remove('overlay');
+  document.body.classList.remove('overlay');
+  document.body.scrollTop = prevScrollTop;
+  lecturerImage.parentNode.classList.remove('lecturer_active');
+});
 
-const handleCrossClick = event => event.currentTarget.parentNode.classList.remove('active');
-const reviewCrossClicks = () => {
-  const crosses = document.querySelectorAll('.schedule-event__review > svg');
-  [].forEach.call(crosses, cross => cross.addEventListener('click', handleCrossClick));
-};
+document.querySelector('.schedule').addEventListener('click', (event) => {
+  const classList = event.target.classList;
 
-const initEvents = () => {
-  titlesClicks();
-  reviewMouseOvers();
-  reviewCrossClicks();
-  lecturersClicks();
-  lecturerClose();
-};
-
-export { initEvents };
+  if (classList.contains('schedule-event__lecturer')) {
+    handleLecturerClick(event);
+  } else if (classList.contains('schedule-event__topic')) {
+    handleTitleClick(event);
+  } else if (classList.contains('schedule-event__review-cross')) {
+    event.target.parentNode.classList.remove('schedule-event__review_active');
+  }
+});

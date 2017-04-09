@@ -4,27 +4,27 @@
   font-family: "Helvetica Neue", sans-serif;
 }
 
-.filter-wrapper {
+.filter__wrapper {
   margin-top: 20px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
 
-.filter-label {
+.filter__label {
   margin-bottom: 8px;
 }
 
-.filter-message {
+.filter__message {
   position: absolute;
   top: 120%;
   left: 0;
   width: 100%;
   text-align: center;
+}
 
-  &.hidden {
-    visibility: hidden;
-  }
+.filter__message_hidden {
+  visibility: hidden;
 }
 
 @media (min-width: 400px) {
@@ -39,11 +39,11 @@
     justify-content: center;
     margin-top: 10px;
   }
-  .filter-wrapper {
+  .filter__wrapper {
     margin: 0 10px;
     flex-direction: row;
   }
-  .filter-label {
+  .filter__label {
     margin: 0 10px 0 0;
   }
 }

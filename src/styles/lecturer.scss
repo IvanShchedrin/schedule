@@ -13,24 +13,23 @@
   overflow-y: auto;
   visibility: hidden;
 
-  &.active {
+  &.lecturer_active {
     visibility: visible;
   }
 }
 
-.lecturer-cross {
+.lecturer__cross {
   position: fixed;
-  top: 20px;
-  right: 20px;
-  width: 30px;
-  height: 30px;
-  stroke: #f00;
+  top: 0;
+  right: 0;
+  width: 25px;
+  height: 25px;
+  padding: 20px;
   opacity: .4;
-  stroke-width: 1px;
   cursor: pointer;
 }
 
-.lecturer-image {
+.lecturer__image {
   display: block;
   margin: 0 auto;
   width: 60vw;
@@ -40,11 +39,11 @@
   transition: opacity .2s .2s;
 }
 
-.active .lecturer-image {
+.lecturer_active .lecturer__image {
   opacity: 1;
 }
 
-.lecturer-text {
+.lecturer__text {
   margin-top: 5vw;
   padding: 0 20px 20px;
   font-size: 4vw;
@@ -55,11 +54,11 @@
   .lecturer {
     padding: 20px;
   }
-  .lecturer-image {
+  .lecturer__image {
     width: 250px;
     height: 250px;
   }
-  .lecturer-text {
+  .lecturer__text {
     max-width: 500px;
     margin: 20px auto 0;
     padding: 0;
@@ -74,14 +73,10 @@
     justify-content: center;
     align-items: center;
   }
-  .lecturer-cross {
-    width: 50px;
-    height: 50px;
-  }
-  .lecturer-image {
+  .lecturer__image {
     margin: 0 40px 0 0;
   }
-  .lecturer-text {
+  .lecturer__text {
     margin: 0;
     max-width: 700px;
     max-height: 100%;

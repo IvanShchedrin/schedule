@@ -1,16 +1,12 @@
 <% const date = new Date(props.date) %>
 
 <div class="schedule-event" data-alias="<%= props.alias %>">
-    <div class="schedule-event__topic">
-        <a class="pseudo-link">
+        <a class="schedule-event__topic pseudo-link">
             <%= props.topic %>
         </a>
-    </div>
-    <div class="schedule-event__lecturer">
-        <a class="pseudo-link" href="<%= props.lecturer %>">
+        <a class="schedule-event__lecturer pseudo-link" href="<%= props.lecturer %>">
             <%= lecturers[props.lecturer].name %>
         </a>
-    </div>
     <div class="divider"></div>
     <% props.schools.forEach(function(key) { %>
         <div class="schedule-event__school">
@@ -32,9 +28,7 @@
         <a href="/lectures/<%= props.alias %>" class="link">Материалы лекции</a>
     </div>
     <div class="schedule-event__review">
-        <svg x="0" y="0" viewBox="0, 0, 10, 10">
-            <g><path d="M2.5,2.5 L7.5,7.5"/><path d="M2.5,7.5 L7.5,2.5"/></g>
-        </svg>
+        <img class="schedule-event__review-cross" src="../assets/cross.svg" alt="close">
         <div class="schedule-event__review-text">
             <%= props.review %>
         </div>

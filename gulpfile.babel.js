@@ -7,7 +7,7 @@ import cleanCSS from 'gulp-clean-css';
 import fs from 'fs';
 import webpack from 'gulp-webpack';
 import connect from 'gulp-connect';
-import * as utils from './src/utils/index.js';
+import * as utils from './src/js/utils.js';
 
 const paths = {
   data: './src/data/**.*',

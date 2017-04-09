@@ -11,21 +11,25 @@
   background-color: rgba(255, 255, 255, .95);
   transition: transform .5s;
   transform: translateY(100%);
+}
 
-  &.active {
-    transform: translateY(0);
-  }
+.schedule-event__review_active {
+  transform: translateY(0);
+}
 
-  & > svg {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 30px;
-    height: 30px;
-    stroke: #f00;
-    opacity: .4;
-    stroke-width: 1px;
-  }
+.schedule-event__review-cross {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  padding: 10px;
+  opacity: .4;
+}
+
+.schedule-event__review_active .schedule-event__review-cross {
+  transition: transform .3s .5s;
+  transform: rotate(270deg);
 }
 
 .schedule-event__review-text {
