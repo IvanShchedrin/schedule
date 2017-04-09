@@ -50,11 +50,7 @@
 
 	var _datesChecker2 = _interopRequireDefault(_datesChecker);
 
-	var _events = __webpack_require__(4);
-
-	var _events2 = _interopRequireDefault(_events);
-
-	var _filters = __webpack_require__(6);
+	var _filters = __webpack_require__(4);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -406,101 +402,18 @@
 
 	'use strict';
 
-	var _lecturers = __webpack_require__(5);
-
-	var _lecturers2 = _interopRequireDefault(_lecturers);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var lecturerImage = document.querySelector('.lecturer__image');
-	var lecturerText = document.querySelector('.lecturer__text');
-	var lecturerPopup = document.querySelector('.lecturer');
-	var htmlElement = document.querySelector('html');
-	var prevScrollTop = 0;
-
-	var handleLecturerClick = function handleLecturerClick(event) {
-	  event.preventDefault();
-	  var data = _lecturers2.default[event.target.pathname.substring(1)];
-
-	  prevScrollTop = document.body.scrollTop;
-	  document.body.classList.add('overlay');
-	  htmlElement.classList.add('overlay');
-	  lecturerPopup.classList.add('lecturer_active');
-	  lecturerImage.src = data.image;
-	  lecturerText.innerHTML = data.about;
-	};
-
-	var handleTitleClick = function handleTitleClick(event) {
-	  event.preventDefault();
-	  event.target.parentNode.querySelector('.schedule-event__review').classList.add('schedule-event__review_active');
-	};
-
-	document.querySelector('.lecturer__cross').addEventListener('click', function () {
-	  htmlElement.classList.remove('overlay');
-	  document.body.classList.remove('overlay');
-	  document.body.scrollTop = prevScrollTop;
-	  lecturerImage.parentNode.classList.remove('lecturer_active');
-	});
-
-	document.querySelector('.schedule').addEventListener('click', function (event) {
-	  var classList = event.target.classList;
-
-	  if (classList.contains('schedule-event__lecturer')) {
-	    handleLecturerClick(event);
-	  } else if (classList.contains('schedule-event__topic')) {
-	    handleTitleClick(event);
-	  } else if (classList.contains('schedule-event__review-cross')) {
-	    event.target.parentNode.classList.remove('schedule-event__review_active');
-	  }
-	});
-
-/***/ },
-/* 5 */
-/***/ function(module, exports) {
-
-	module.exports = {
-		"basvasilich": {
-			"name": "Вадим Пацев",
-			"about": "Руководитель отдела разработки интерфейсов. В Яндексе с 2008 года. Был в роли дизайнера и разработчика интерфейсов. Интересуется быстрым прототипированием и визуальными возможностями современных веб технологий.",
-			"image": "https://avatars.mds.yandex.net/get-yaevents/198307/86248e34b6d511e687ef002590c62a5c/big"
-		},
-		"d-dushkin": {
-			"name": "Дмитрий Душкин",
-			"about": "Кандидат технических наук, научный сотрудник ИПУ РАН с 2008 по 2013. Пришёл в Яндекс.Картинки в 2014 году, отвечал за мобильную версию и рост производительности сервиса. В 2016 перешёл в Yandex Data Factory, где разрабатывает интерфейсы и дизайн веб-приложений для B2B.",
-			"image": "https://avatars.mds.yandex.net/get-yaevents/95043/0914ac42b6dc11e687ef002590c62a5c/big"
-		},
-		"veged": {
-			"name": "Сергей Бережной",
-			"about": "Веб-разработчик в Яндексе с 2005 года. Успел поработать над Поиском, Почтой, Поиском по блогам, Я.ру, Картинками, Видео. Помимо этого, активно занимается развитием внутренних инструментов для создания сайтов.",
-			"image": "https://avatars.mds.yandex.net/get-yaevents/194464/2e89984ab6d511e687ef002590c62a5c/big"
-		},
-		"alt-j": {
-			"name": "Андрей Морозов",
-			"about": "Окончил радиофизический факультет Киевского Национального Университета. Автор трёх патентных заявок. В Яндексе с 2014 года, разрабатывает интерфейсы Яндекс.Карт.",
-			"image": "https://avatars.mds.yandex.net/get-yaevents/204268/478d8b92b6dc11e687ef002590c62a5c/big"
-		},
-		"andre487": {
-			"name": "Прокопюк Андрей",
-			"about": "В 2008 году впечатлился веб-разработкой из-за скорости воплощения идей и лёгкость их донесения до пользователей. В Яндексе с 2014 года, разрабатывает страницу поисковой выдачи. Любит сложные задачи, интересуется аналитикой, тестированием и новыми способами автоматизировать рутину.",
-			"image": "https://avatars.mds.yandex.net/get-yaevents/197753/08c0df918516725d5f8ac452fb8bf610/big"
-		},
-		"maxatwork": {
-			"name": "Максим Васильев",
-			"about": "Во фронтенд-разработке с 2007 года. До 2013-го, когда пришёл в Яндекс, работал технологом в студии Лебедева и других компаниях.",
-			"image": "https://avatars.mds.yandex.net/get-yaevents/194464/21e1dae2b6dc11e687ef002590c62a5c/big"
-		}
-	};
-
-/***/ },
-/* 6 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.initFilters = undefined;
+
+	exports.default = function () {
+	  document.querySelector('.filter__lecturer').addEventListener('change', function (event) {
+	    return filterEvents('lecturer', event.target.value);
+	  });
+	  document.querySelector('.filter__school').addEventListener('change', function (event) {
+	    return filterEvents('school', event.target.value);
+	  });
+	};
 
 	var _schedule = __webpack_require__(2);
 
@@ -551,16 +464,7 @@
 	  hiddenEvents.indexOf(0) === -1 ? message.classList.remove('schedule-event_hidden') : message.classList.add('schedule-event_hidden');
 	};
 
-	var initFilters = function initFilters() {
-	  document.querySelector('.filter__lecturer').addEventListener('change', function (event) {
-	    return filterEvents('lecturer', event.target.value);
-	  });
-	  document.querySelector('.filter__school').addEventListener('change', function (event) {
-	    return filterEvents('school', event.target.value);
-	  });
-	};
-
-	exports.initFilters = initFilters;
+	;
 
 /***/ }
 /******/ ]);
