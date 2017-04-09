@@ -73,7 +73,7 @@ gulp.task('assets', ['rm:assets'], () => {
 
 gulp.task('server', () => connect.server({ root: 'build', port: 8000 }));
 
-gulp.task('gh:publish', () => ghpages.publish(path.join(__dirname, 'build')));
+gulp.task('gh:publish', ['build'], () => ghpages.publish(path.join(__dirname, 'build')));
 
 gulp.task('default', ['html', 'css', 'js', 'assets', 'server'], () => {
   gulp.watch([paths.data, paths.html], ['html']);
@@ -82,4 +82,4 @@ gulp.task('default', ['html', 'css', 'js', 'assets', 'server'], () => {
   gulp.watch([paths.assets], ['assets']);
 });
 
-gulp.task('build', ['html', 'css', 'js']);
+gulp.task('build', ['html', 'css', 'js', 'assets']);
