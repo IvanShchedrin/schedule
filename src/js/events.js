@@ -8,7 +8,7 @@ let prevScrollTop = 0;
 
 const handleLecturerClick = (event) => {
   event.preventDefault();
-  const data = lecturersData[event.target.pathname.substring(1)];
+  const data = lecturersData[event.target.pathname.split(/[/ ]+/).pop()];
 
   prevScrollTop = document.body.scrollTop;
   document.body.classList.add('overlay');
