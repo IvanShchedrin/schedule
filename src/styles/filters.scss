@@ -9,6 +9,10 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+
+  & > select {
+    width: 200px;
+  }
 }
 
 .filter__label {
@@ -37,10 +41,13 @@
   .filter {
     display: flex;
     justify-content: center;
-    margin-top: 10px;
+    flex-wrap: wrap;
+    max-width: 600px;
+    margin: 10px auto 0;
+    padding: 0 10px;
   }
   .filter__wrapper {
-    margin: 0 10px;
+    margin: 0 10px 10px;
     flex-direction: row;
   }
   .filter__label {

@@ -7,28 +7,40 @@
   <link rel="stylesheet" type="text/css" href="index.css">
 </head>
 <body>
-
   <div class="filter">
+
     <div class="filter__wrapper">
       <label class="filter__label" for="lecturer">Лектор:</label>
-      <select class="filter__lecturer" id="lecturer">
+      <select id="lecturer">
         <option value="all">Все</option>
         <% Object.keys(lecturers).forEach(key => { %>
           <option value="<%= key %>"><%= lecturers[key].name %></option>
         <% }) %>
       </select>
     </div>
+
     <div class="filter__wrapper">
       <label class="filter__label" for="school">Школа:</label>
-      <select class="filter__school" id="school">
+      <select id="school">
         <option value="all">Все</option>
         <% Object.keys(schools).forEach(key => { %>
           <option value="<%= key %>"><%= schools[key].name %></option>
         <% }) %>
       </select>
     </div>
+
+    <div class="filter__wrapper">
+      <label class="filter__label" for="dateAfter">Дата с:</label>
+      <input type="text" id="dateAfter" placeholder="2017-03-12" />
+    </div>
+
+    <div class="filter__wrapper">
+      <label class="filter__label" for="dateBefore">Дата до:</label>
+      <input type="text" id="dateBefore" placeholder="2017-04-24" />
+    </div>
+
     <div class="filter__message filter__message_hidden">
-      Для заданного поиска нет событий.
+      Для заданного фильтра нет событий :(
     </div>
   </div>
 
