@@ -1,20 +1,22 @@
 import scheduleData from 'json!./../data/schedule.json';
-import { findElem } from './utils';
+const events = document.querySelectorAll('.schedule-event');
+const dateNow = +new Date();
 
-export default function() {
-  const events = document.querySelectorAll('.schedule-event');
-  const dateNow = +new Date();
+// Предполагается, что консистентность данных соблюдена и разметка соответствует тем данным, которые
+// содержатся в js-бандле
 
-  [].forEach.call(events, event => {
-    const eventData = findElem(scheduleData, 'alias', event.dataset.alias);
-    const dateEvent = +new Date(eventData.date);
-    let className = 'schedule-event_future';
+// Пробегаем во всем событиям и, в зависимости от времени (в будущем, от начала прошло меньше
+// или больше 3-х часов) добавляем соответствующий класс
+scheduleData.forEach((event, index) => {
+  const dateEvent = +new Date(event.date);
+  let className;
 
-    if (dateEvent < dateNow - 1000*60*180) { // 3 hours left
-      className = 'schedule-event_past';
-    } else if (dateEvent < dateNow) {
-      className = 'schedule-event_now';
-    }
-    event.classList.add(className);
-  });
-};
+  if (dateEvent < dateNow - 1000*60*180) { // 3 часа
+    className = 'schedule-event_past';
+  } else if (dateEvent < dateNow) {
+    className = 'schedule-event_now';
+  } else {
+    className = 'schedule-event_future';
+  }
+  events[index].classList.add(className);
+});

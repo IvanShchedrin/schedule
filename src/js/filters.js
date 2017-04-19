@@ -1,51 +1,61 @@
 import scheduleData from 'json!./../data/schedule.json';
-import { findElem, isDateValid } from './utils';
+import { isDateValid } from './utils';
 
+// Сообщение о пустом результате фильтрации
 const message = document.querySelector('.filter__message');
-const events = document.querySelector('.schedule').children;
+const events = document.querySelectorAll('.schedule-event');
+// Можно выбрать фильтр по ключу и проверить, удовлетворяет ли событие данному значению
 const filters = {
-  lecturer: (item, value) => item.lecturer === value,
-  school: (item, value) => item.schools.indexOf(value) !== -1,
-  dateAfter: (item, value) => +new Date(item.date) >= +new Date(value),
-  dateBefore: (item, value) => +new Date(item.date) <= +new Date(value),
+  lecturer: (item, value) => item.lecturer === value, // фильтр по лекторы
+  school: (item, value) => item.schools.indexOf(value) !== -1, // фильтр по школам
+  dateAfter: (item, value) => +new Date(item.date) >= +new Date(value), // фильтр по дате 'с'
+  dateBefore: (item, value) => +new Date(item.date) <= +new Date(value), // и 'по'
 };
+// Текущие значение фильтров
 const values = {};
 
 const filterEvents = (key, value) => {
+  // Немного странным кажется поведение, когда начинаешь вбивать дату и сразу пустой результат
+  // Применяем фильтр только когда указаны первые 4 символа - год
   if ((key === 'dateAfter' || key === 'dateBefore') && (!isDateValid(value) || value.length < 4)) {
     delete values[key];
     return;
   }
 
+  // Генерим массив нулей в количестве = количеству событий
+  // В него будем копить все события, которые потом пометим спрятанными
   const hiddenEvents = new Array(events.length + 1).join('0').split('').map(parseFloat);
 
+  // Сбрасываем фильтр, если выбран "показать все"
   if (value === 'all') {
     delete values[key];
   } else {
     values[key] = value;
   }
 
+  // Пробегаем по всем фильтрам
   Object.keys(values).forEach((filterKey) => {
-    hiddenEvents.forEach((hiddenEvent, i) => {
-      if (hiddenEvent) {
+    hiddenEvents.forEach((hiddenEvent, index) => {
+      // Если уже помечен как спрятанный, не делаем лушних вычислений
+      if (hiddenEvent === 1) {
         return;
       }
 
-      const eventData = findElem(scheduleData, 'alias', events[i].dataset.alias);
-
-      if (!filters[filterKey](eventData, values[filterKey])) {
-        hiddenEvents[i] = 1;
+      // По ключу достаем фильтр и делаем проверку. Если не ОК, то помечаем единичкой - спрятать!
+      if (!filters[filterKey](scheduleData[index], values[filterKey])) {
+        hiddenEvents[index] = 1;
       }
     });
   });
 
+  // Прячем или показываем все события
   hiddenEvents.forEach((item, i) => item ? events[i].classList.add('schedule-event_hidden') : events[i].classList.remove('schedule-event_hidden'));
+  // Если ниодного показанного события, то пказываем сообщение о пустом результате
   hiddenEvents.indexOf(0) === -1 ? message.classList.remove('filter__message_hidden') : message.classList.add('filter__message_hidden');
 };
 
-export default function () {
-  document.querySelector('#lecturer').addEventListener('change', event => filterEvents('lecturer', event.target.value));
-  document.querySelector('#school').addEventListener('change', event => filterEvents('school', event.target.value));
-  document.querySelector('#dateAfter').addEventListener('input', event => filterEvents('dateAfter', event.target.value));
-  document.querySelector('#dateBefore').addEventListener('input', event => filterEvents('dateBefore', event.target.value));
-};
+// Навешиваем обработчики на инпуты
+document.querySelector('#lecturer').addEventListener('change', event => filterEvents('lecturer', event.target.value));
+document.querySelector('#school').addEventListener('change', event => filterEvents('school', event.target.value));
+document.querySelector('#dateAfter').addEventListener('input', event => filterEvents('dateAfter', event.target.value));
+document.querySelector('#dateBefore').addEventListener('input', event => filterEvents('dateBefore', event.target.value));

@@ -12,6 +12,7 @@
   color: rgb(40, 40, 40);
   overflow: hidden;
   background-color: #fff;
+  will-change: transform, opacity;
   transition: background-color 3s, opacity .3s, transform .3s;
 
   &:hover {
