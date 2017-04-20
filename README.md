@@ -1,5 +1,5 @@
 ## Расписание
-[Задание](https://academy.yandex.ru/events/frontend/shri_msk-2017/)
+[Задание 1](https://academy.yandex.ru/events/frontend/shri_msk-2017/)
 
 ### Немного о реализации
 Кратко по пунктам:
