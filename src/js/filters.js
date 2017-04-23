@@ -4,12 +4,18 @@ import { isDateValid } from './utils';
 // Сообщение о пустом результате фильтрации
 const message = document.querySelector('.filter__message');
 const events = document.querySelectorAll('.schedule-event');
+const dateNow = +new Date();
+const treeHoursInMs = 1000*60*180;
 // Можно выбрать фильтр по ключу и проверить, удовлетворяет ли событие данному значению
 const filters = {
   lecturer: (item, value) => item.lecturer === value, // фильтр по лекторы
   school: (item, value) => item.schools.indexOf(value) !== -1, // фильтр по школам
-  dateAfter: (item, value) => +new Date(item.date) >= +new Date(value), // фильтр по дате 'с'
-  dateBefore: (item, value) => +new Date(item.date) <= +new Date(value), // и 'по'
+  date: (item, value) => { // фльтр по дате
+    if (value === 'past') return +new Date(item.date) < (dateNow - treeHoursInMs); // 3 часаа
+    if (value === 'now') return (+new Date(item.date) < dateNow) && (+new Date(item.date) > dateNow - treeHoursInMs);
+    if (value === 'future') return +new Date(item.date) > dateNow;
+    return true;
+  },
 };
 // Текущие значение фильтров
 const values = {};
@@ -50,12 +56,11 @@ const filterEvents = (key, value) => {
 
   // Прячем или показываем все события
   hiddenEvents.forEach((item, i) => item ? events[i].classList.add('schedule-event_hidden') : events[i].classList.remove('schedule-event_hidden'));
-  // Если ниодного показанного события, то пказываем сообщение о пустом результате
+  // Если ниодного показанного события, то показываем сообщение о пустом результате
   hiddenEvents.indexOf(0) === -1 ? message.classList.remove('filter__message_hidden') : message.classList.add('filter__message_hidden');
 };
 
 // Навешиваем обработчики на инпуты
 document.querySelector('#lecturer').addEventListener('change', event => filterEvents('lecturer', event.target.value));
 document.querySelector('#school').addEventListener('change', event => filterEvents('school', event.target.value));
-document.querySelector('#dateAfter').addEventListener('input', event => filterEvents('dateAfter', event.target.value));
-document.querySelector('#dateBefore').addEventListener('input', event => filterEvents('dateBefore', event.target.value));
+document.querySelector('#date').addEventListener('change', event => filterEvents('date', event.target.value));

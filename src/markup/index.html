@@ -30,13 +30,13 @@
     </div>
 
     <div class="filter__wrapper">
-      <label class="filter__label" for="dateAfter">Дата с:</label>
-      <input type="text" id="dateAfter" placeholder="2017-03-12" />
-    </div>
-
-    <div class="filter__wrapper">
-      <label class="filter__label" for="dateBefore">Дата до:</label>
-      <input type="text" id="dateBefore" placeholder="2017-04-24" />
+      <label class="filter__label" for="date">Дата:</label>
+      <select id="date">
+        <option value="all">Все</option>
+        <option value="future">Будут позже</option>
+        <option value="now">Идут сейчас</option>
+        <option value="past">Прошедшие</option>
+      </select>
     </div>
 
     <div class="filter__message filter__message_hidden">
