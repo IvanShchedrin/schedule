@@ -1,3 +1,4 @@
+// Стили для попап с инфо о лекторе
 .lecturer {
   display: flex;
   position: fixed;
@@ -13,11 +14,13 @@
   overflow-y: auto;
   visibility: hidden;
 
+  // Показываем попап
   &.lecturer_active {
     visibility: visible;
   }
 }
 
+// Стили для крестика
 .lecturer__cross {
   position: fixed;
   top: 0;
@@ -29,6 +32,7 @@
   cursor: pointer;
 }
 
+// Изображение лектора
 .lecturer__image {
   display: block;
   margin: 0 auto;
@@ -39,10 +43,12 @@
   transition: opacity .2s .5s;
 }
 
+// Показываем с небольшой задержкой. Небольшой хак - чтобы на медленном интернете не было мигания
 .lecturer_active .lecturer__image {
   opacity: 1;
 }
 
+// Текст о лекторе
 .lecturer__text {
   margin-top: 5vw;
   padding: 0 20px 20px;
@@ -50,6 +56,7 @@
   line-height: 5.5vw;
 }
 
+// Немного увеличиваем размеры для больших телефонов
 @media (min-width: 520px) {
   .lecturer {
     padding: 20px;
@@ -67,6 +74,7 @@
   }
 }
 
+// Меняем компановку для планшетов и десктопа
 @media (min-width: 820px) {
   .lecturer {
     flex-direction: row;

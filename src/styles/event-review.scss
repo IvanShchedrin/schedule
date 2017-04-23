@@ -1,3 +1,4 @@
+// Стили для описания события
 .schedule-event__review {
   position: absolute;
   top: 0;
@@ -13,10 +14,12 @@
   transform: translateY(100%);
 }
 
+// Показывает описание
 .schedule-event__review_active {
   transform: translateY(0);
 }
 
+// Стили для крестика
 .schedule-event__review-cross {
   position: absolute;
   top: 0;
@@ -27,11 +30,13 @@
   opacity: .4;
 }
 
+// Немного анимаций :)
 .schedule-event__review_active .schedule-event__review-cross {
   transition: transform .3s .5s;
   transform: rotate(270deg);
 }
 
+// Контейнер с текстом для удобной настройки скролла
 .schedule-event__review-text {
   height: 100%;
   margin: -20px -20px -20px 0;
@@ -39,6 +44,7 @@
   overflow-y: auto;
 }
 
+// Немного правим отступы, но только для больших телефонов
 @media (max-width: 624px) and (min-width: 400px) {
   .schedule-event__review {
     padding: 30px;
@@ -49,6 +55,7 @@
   }
 }
 
+// Фиксируем размеры шрифта для планшетов и десктопа
 @media (min-width: 625px) {
   .schedule-event__review {
     font-size: 15px;

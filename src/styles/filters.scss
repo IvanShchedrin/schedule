@@ -1,9 +1,11 @@
+// Стили для фильтров. По-сути здесь только позиционирование. Не переопределял стандартные стили
 .filter {
   position: relative;
   padding: 0 20px;
   font-family: "Helvetica Neue", sans-serif;
 }
 
+// Почему wrapper внутри фильтра? Не спрашивайте, наверное я был пьян...
 .filter__wrapper {
   margin-top: 20px;
   display: flex;
@@ -19,6 +21,7 @@
   margin-bottom: 8px;
 }
 
+// Сообщение о пустом поиске
 .filter__message {
   position: absolute;
   top: 120%;
@@ -27,16 +30,19 @@
   text-align: center;
 }
 
+// Прячем сообщение
 .filter__message_hidden {
   visibility: hidden;
 }
 
+// Увеличиваем паддинги для больших телефонов
 @media (min-width: 400px) {
   .filter {
     padding: 0 30px;
   }
 }
 
+// Перестраиваем для планшетов и десктопа
 @media (min-width: 625px) {
   .filter {
     display: flex;

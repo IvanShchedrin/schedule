@@ -1,24 +1,56 @@
+// Импортироуем все блоки, подмешиваем normalize
 @import "normalize";
 @import "./event.scss";
 @import "./lecturer.scss";
 @import "./filters.scss";
 
+// Отступ для всей страницы
 .content {
   padding: 0 20px;
 }
 
+// Используется для превента скролла страницы когда открыт попап
 .overlay {
   width: 100%;
   height: 100%;
   overflow: hidden;
 }
 
+// Горизонтальный разделитель текста
+.divider {
+  margin: 4vw 0;
+  border-bottom: 1px solid #d6d6d6;
+}
+
+// Ссылки. Наверное
+.pseudo-link, .link {
+  display: inline;
+  border-bottom: 1px dashed rgb(40, 40, 40);
+  text-decoration: none;
+  color: rgb(40, 40, 40);
+  cursor: pointer;
+  transition: color .3s, border-color .3s;
+
+  &:hover {
+    transition: none;
+    color: rgba(255, 0, 0, 0.5);
+    border-bottom-color: rgba(255, 0, 0, 0.5);
+  }
+}
+
+// У обычной ссылки сплошное подчеркивание!
+.link {
+  border-bottom-style: solid;
+}
+
+// Немного правим отступ для больших телефонов
 @media (min-width: 400px) {
   .content {
     padding: 0 30px;
   }
 }
 
+// Отступы и компановка элементов на больших дисплеях
 @media (min-width: 625px) {
   .schedule {
     display: flex;
@@ -29,20 +61,27 @@
   .content {
     padding: 0;
   }
+  .divider {
+    margin: 15px 0;
+  }
 }
 
+// Показываем 3 плитки в ряд. Почему-то возникли сложности в центрировании flex-контейнером. Последний элемент не хотел
+// прижиматься слева, тоже центрировался. Решения нормального так и не нашел, пришлось костылить :((
 @media (min-width: 930px) {
   .schedule {
     width: 930px;
   }
 }
 
+// 4 плитки
 @media (min-width: 1240px) {
   .schedule {
     width: 1240px;
   }
 }
 
+// 5 плиток
 @media (min-width: 1550px) {
   .schedule {
     width: 1550px;

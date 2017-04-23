@@ -1,5 +1,6 @@
 @import "./event-review.scss";
 
+// Блок "Событие". На маленьких дисплеях - резиновая. На больших - фиксированная.
 .schedule-event {
   box-sizing: border-box;
   margin-top: 20px;
@@ -12,17 +13,18 @@
   color: rgb(40, 40, 40);
   overflow: hidden;
   background-color: #fff;
+  // Оптимизирует анимацию в Firefox и, возможно, в других браузерах
   will-change: transform, opacity;
   transition: background-color 3s, opacity .3s, transform .3s;
 
   &:hover {
     transform: scale(1.03);
   }
-
+  // Используется для фильтрации
   &.schedule-event_hidden {
     display: none;
   }
-
+  // Прошедшее событие
   &.schedule-event_past {
     opacity: .5;
 
@@ -30,45 +32,23 @@
       opacity: 1;
     }
   }
-
+  // Текущее событие
   &.schedule-event_now {
     background-color: #eef7ff;
   }
 }
 
-.divider {
-  margin: 4vw 0;
-  border-bottom: 1px solid #d6d6d6;
-}
-
-.pseudo-link, .link {
-  display: inline;
-  border-bottom: 1px dashed rgb(40, 40, 40);
-  text-decoration: none;
-  color: rgb(40, 40, 40);
-  cursor: pointer;
-  transition: color .3s, border-color .3s;
-
-  &:hover {
-    transition: none;
-    color: rgba(255, 0, 0, 0.5);
-    border-bottom-color: rgba(255, 0, 0, 0.5);
-  }
-}
-
-.link {
-  border-bottom-style: solid;
-}
-
+// Название события
 .schedule-event__topic {
   font-size: 5vw;
   line-height: 6.5vw;
 }
 
+// Имя лектора
 .schedule-event__lecturer {
   margin-top: 2vw;
   font-size: 4.5vw;
-
+  // Добавил для переноса на новую строку, так как этот и предыдущий элемент - блочно-строчные
   &:before {
     display: block;
     content: "";
@@ -76,11 +56,13 @@
   }
 }
 
+// Название школы
 .schedule-event__school {
   font-size: 4vw;
   line-height: 5.5vw;
 }
 
+// Общие стили для донтейнеров с локацией, ссылкой на метериалы и ссылкой на прямой эфир
 .schedule-event__place, .schedule-event__materials, .schedule-event__stream {
   display: none;
   position: absolute;
@@ -89,6 +71,7 @@
   font-size: 4vw;
 }
 
+// Дата собырия. Она как-бы на фоне, прижата в справа-снизу, на нее может заезжать текст - такой дизайн :)
 .schedule-event__date {
   position: absolute;
   bottom: 20px;
@@ -98,17 +81,20 @@
   color: rgba(255, 0, 0, .3);
 }
 
+// День события
 .schedule-event__date-day {
   font-size: 18vw;
   line-height: 15vw;
   font-family: "Arial Narrow", Arial, sans-serif;
 }
 
+// Месяц события
 .schedule-event__date-month {
   font-size: 4.5vw;
   font-family: "Arial", sans-serif;
 }
 
+// Показываем ссылки в зависимости от времени события - идет сейчас, прошло или будет позже
 .schedule-event_future .schedule-event__place {
   display: block;
 }
@@ -121,6 +107,7 @@
   display: block;
 }
 
+// Немного увеличиваем отступы для фаблетов и маленьких планшетов
 @media (min-width: 400px) {
   .schedule-event {
     margin-top: 30px;
@@ -136,6 +123,7 @@
   }
 }
 
+// Планшеты и десктоп. Просто фиксируем шрифты, интерленьяж, отступы и прочие размеры
 @media (min-width: 625px) {
   .schedule-event {
     display: inline-block;
@@ -152,9 +140,6 @@
   .schedule-event__lecturer {
     margin-top: 10px;
     font-size: 17px;
-  }
-  .divider {
-    margin: 15px 0;
   }
   .schedule-event__school {
     font-size: 15px;
