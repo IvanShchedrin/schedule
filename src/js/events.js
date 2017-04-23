@@ -32,7 +32,7 @@ const handleTitleClick = (event) => {
 };
 
 // Обрабатываем клик на крестике попапа с инфо о лекторе
-document.querySelector('.lecturer__cross').addEventListener('click', () => {
+document.querySelector('.lecturer').addEventListener('click', () => {
   // Сбралываем класс с overflow: hidden
   htmlElement.classList.remove('overlay');
   document.body.classList.remove('overlay');
